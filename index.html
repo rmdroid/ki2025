@@ -392,11 +392,17 @@
             }
             .slide {
                 page-break-after: always;
-                position: relative;
+                page-break-inside: avoid;
+                position: static !important;
                 display: block !important;
                 opacity: 1 !important;
                 transform: none !important;
+                transition: none !important;
                 height: 100vh;
+                width: 100%;
+            }
+            .slide:last-child {
+                page-break-after: auto;
             }
         }
     </style>
@@ -661,7 +667,9 @@
             slides.forEach((slide, index) => {
                 const thumb = document.createElement('div');
                 thumb.className = 'thumbnail';
-                thumb.innerHTML = `Folie ${index + 1}`;
+                const heading = slide.querySelector('h1, h2');
+                const title = heading ? heading.textContent.trim() : `Folie ${index + 1}`;
+                thumb.textContent = title;
                 thumb.addEventListener('click', () => showSlide(index));
                 container.appendChild(thumb);
             });
