@@ -704,7 +704,7 @@
 
         document.getElementById('prev').addEventListener('click', prevSlide);
         document.getElementById('next').addEventListener('click', nextSlide);
-        document.getElementById('export-pdf').addEventListener('click', () => window.print());
+        document.getElementById('export-pdf').addEventListener('click', () => window.open('presentation.pdf', '_blank'));
 
         document.addEventListener('keydown', (e) => {
             if (e.key === 'ArrowRight' || e.key === ' ') {
